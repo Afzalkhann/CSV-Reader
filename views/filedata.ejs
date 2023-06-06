@@ -1,0 +1,20 @@
+<%=title%>
+<table>
+    <tr>
+        <%for(header of heading){%>
+            <th><%=header%></th>
+        <%}%>
+    </tr>
+    <%for(let i=0;i<data.length;i++){%>
+        
+        <tr>
+            <%for(let j=0;j<heading.length;j++){%>
+                <td>
+                    <%=data[i][heading[j]]%>
+                </td>
+                
+            <%}%>
+        </tr>
+    <%}%>
+    
+</table>
