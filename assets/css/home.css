@@ -1,6 +1,15 @@
 body{
-    background-color: rgb(39, 37, 37);
+    background-color: rgb(240, 225, 225);
+    opacity:0;
+    transition: opacity 1s linear 1s; 
 }
+a{
+    text-decoration: none;
+    color:white;
+}
+
+
+
 #main-head{
     text-align: center;
     font-size: larger;
@@ -10,7 +19,8 @@ body{
 }
 form{
     margin: 20px;
-    background-color: beige;
+    background-color: rgb(4, 132, 111);
+    color: rgb(242, 247, 252);
     opacity: 70%;
     width: 30%;
     height: 30%;
@@ -21,4 +31,29 @@ form{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+.table{
+    margin-top: 30px;
+    width: auto;
+    min-width: 400px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    
+}
+#table-head{
+    color: rgb(28, 16, 16);
+    text-align: center;
+}
+ 
+#file-name, #file-delete{
+    transition: background-color 2s linear 1s;
+}
+
+#file-name:hover, #file-delete:hover{
+    background-color: rgb(96, 188, 234);
+}
+
+body:hover{
+    opacity: 1;
 }

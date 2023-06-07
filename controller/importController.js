@@ -1,27 +1,40 @@
 const fs=require('fs')
 const csv=require('csv-parser')
 const File=require('../models/files')
+// to delete file from db and folder
+module.exports.delete=async function(req,res){
+    try{
+        let file=await File.findById(req.query.id)
+        fs.unlinkSync(file.filepath)
+         await File.findByIdAndDelete(req.query.id)
+         
+         res.redirect('back')
 
+
+    }catch(err){
+        console.log('internel server error',err)
+        res.redirect('back')
+    }
+}
+
+// to fetech data from the uploaded file
 module.exports.data=async function(req,res){
     try{
         const result=[]
         let heading=[]
         let file=await File.findById(req.query.id)
-        console.log('got file')
         function uploadCsv(path){
-            console.log(path)
+            
             if(fs.existsSync(path)){
                 fs.createReadStream(path)
                 .pipe(csv())
-                .on('not')
                 .on('headers',(headers)=>{
-                    //console.log(headers)
+                    console.log(headers)
                     heading=headers
                 })
                 .on('data',(data)=>result.push(data))
                 .on('end',()=>{
-                    
-                    console.log(result)
+                
                     res.render('filedata',{
                         heading:heading,
                         data:result,
@@ -39,6 +52,8 @@ module.exports.data=async function(req,res){
     }
 
 }
+
+// to import uploaded file details to the DB
 module.exports.import=async function(req,res){
     try{
 
@@ -52,7 +67,6 @@ module.exports.import=async function(req,res){
     // console.log(req.body.name)
     
     
-        console.log("file is uploaded")
         res.redirect('back')
     }catch(err){
 

@@ -1,5 +1,6 @@
-<link rel="stylesheet" href="/css/home.css">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/home.css">
 <body>
 <div id="main-head"><h1> CSV File Reader</h1> </div>
 <form action="/import-csv" method="post" enctype="multipart/form-data">
@@ -7,21 +8,28 @@
     <input type="file" id="file" name="file" accept="csv">
     <input type="submit" value="storage-file">
 </form>
-<div id="list-container">
-    <div id="row col-head">
-        <div><h3>FIle Name</h3></div>
-        <div><h3>FIle Type</h3></div>
-    </div>
+<h3 id="table-head">List of files uploaded</h3>
+<table class="table table-dark">
     
-    <%for(file of files){%>
-        <div id="row">
-            <div><a href="/file/?id=<%=file._id%>"><p><%=file.filename%></p></a></div>
-            <p><%=file.filetype%></p>
+    <tr >
+        <th>#</th>
+        <th scope="col">FIle Name></th>
+        <th Scope="col"> Delete</th>
+        <th scope="col">FIle Type</th>
+    </tr>
+    
+    <%i=0; for(file of files){%>
+    <tr>
+        
+            <th scope="row"><%=i+=1%>
+            <td id="file-name"><a href="/file/?id=<%=file._id%>"><%=file.filename%></a></td>
+            <td id="file-delete"><a href="/delete/?id=<%=file._id%>">X</a></td>
+           <td><%=file.filetype%></td>
             
 
-        </div>
+    </tr>
     <%}%>
-</div>
+</table>
 
 <script src="/js/home.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

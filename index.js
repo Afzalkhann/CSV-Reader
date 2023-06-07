@@ -34,8 +34,12 @@ app.set('view engine','ejs');
 app.set('views','./views');
 //app.use('/',require('./routers/'))
 app.get('/',homeController.home)
+//file upload
 app.post('/import-csv',upload.single('file'),importControlller.import)
+//get uploded files details
 app.get('/file',importControlller.data)
+//to delete uploaded file
+app.get('/delete',importControlller.delete)
 //     // console.log(req.body.name)
     
 //     // uploadCsv(__dirname+'/uploads/'+req.file.filename)
@@ -43,20 +47,7 @@ app.get('/file',importControlller.data)
 //     res.redirect('back')
 // })
 
-function uploadCsv(path){
-    
 
-    fs.createReadStream(path)
-    .pipe(csv())
-    .on('headers',(headers)=>{
-        console.log(headers)
-        heading=headers
-    })
-    .on('data',(data)=>result.push(data))
-    .on('end',()=>{
-        console.log(result)
-    })
-}
 app.use(session({
     name:'csv reader',
     secret:'jgjags',

@@ -1,13 +1,19 @@
-<%=title%>
-<table>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/home.css">
+
+<h1 id="table-head"><%=title%></h1>
+<table class="table table-dark">
     <tr>
+        <th scope="col">#</th>
         <%for(header of heading){%>
-            <th><%=header%></th>
+            <th scope="col"><%=header%></th>
         <%}%>
     </tr>
     <%for(let i=0;i<data.length;i++){%>
         
         <tr>
+                <th scope="row"><%=i+1%></th>
             <%for(let j=0;j<heading.length;j++){%>
                 <td>
                     <%=data[i][heading[j]]%>
