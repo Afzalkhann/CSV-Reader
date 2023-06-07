@@ -1,7 +1,10 @@
+@keyframes fadein {
+    from { opacity: 0}
+    to   { opacity: 1}
+  }
 body{
     background-color: rgb(240, 225, 225);
-    opacity:0;
-    transition: opacity 1s linear 1s; 
+    animation: fadein 2s;
 }
 a{
     text-decoration: none;
@@ -52,8 +55,4 @@ form{
 
 #file-name:hover, #file-delete:hover{
     background-color: rgb(96, 188, 234);
-}
-
-body:hover{
-    opacity: 1;
 }

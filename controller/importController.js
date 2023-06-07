@@ -29,7 +29,7 @@ module.exports.data=async function(req,res){
                 fs.createReadStream(path)
                 .pipe(csv())
                 .on('headers',(headers)=>{
-                    console.log(headers)
+
                     heading=headers
                 })
                 .on('data',(data)=>result.push(data))
